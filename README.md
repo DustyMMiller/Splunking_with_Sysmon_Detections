@@ -1,3 +1,7 @@
 ### Splunking With Sysmon Detections
 
-Will consist of the search and a drilldown in .spl files.
+Will consist of the search in .spl files.
+
+Blog posts are at the following links:
+1. https://hurricanelabs.com/splunk-tutorials/splunking-with-sysmon-series-part-1-the-setup/
+2. https://hurricanelabs.com/splunk-tutorials/splunking-with-sysmon-series-part-2-tuning/

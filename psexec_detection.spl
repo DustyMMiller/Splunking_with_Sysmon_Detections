@@ -1,0 +1,8 @@
+source=xmlwineventlog:microsoft-windows-sysmon/operational EventCode=13 
+([search source=xmlwineventlog:microsoft-windows-sysmon/operational EventCode=11 Image="System" 
+    | strcat "*" file_name Details 
+    | table Details] OR Details="*powershell*") 
+Image="C:\\Windows\\system32\\services.exe" 
+TargetObject="HKLM\\System\\CurrentControlSet\\Services\\*\\ImagePath"
+| table Image, Details, TargetObject, Computer, ProcessId, _time
+| sort _time
