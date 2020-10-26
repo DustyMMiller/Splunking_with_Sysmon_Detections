@@ -9,3 +9,7 @@ Blog posts are at the following links:
 4. Sysmon Modified, Renamed Tools, Encoded or long powershell commands
 5. Evasion techniques
 6. LoTL Binaries
+7. Threat Hunting Windows Registry Changes
+8. Threat Hunting Windows Registry Changes (part 2)
+9. Threat Hunting Processes
+10. Threat Hunting Images/Threads
