@@ -1,0 +1,6 @@
+OriginalFileName,process_name
+electron.exe,code.exe
+win32bridge.server,win32bridge.server.exe
+lgs.exe,lcore.exe
+process monitor,procmon64.exe
+process monitor,procmon.exe

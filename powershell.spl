@@ -1,0 +1,4 @@
+source=xmlwineventlog:microsoft-windows-sysmon/operational EventCode=1 powershell
+| eval command_length = len(CommandLine)
+| search (CommandLine="*-enc*" OR command_length>300)
+| stats count by Image, CommandLine, Computer, command_length

@@ -1,0 +1,5 @@
+source=xmlwineventlog:microsoft-windows-sysmon/operational EventCode=1 
+    NOT (OriginalFileName="-" OR [|inputlookup renamed_tools.csv])
+| eval process_name=lower(process_name), file_name=lower(OriginalFileName)
+| where process_name!=file_name
+| table _time, file_name, process_name, CommandLine, process_path

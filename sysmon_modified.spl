@@ -1,0 +1,4 @@
+source=xmlwineventlog:microsoft-windows-sysmon/operational EventCode=4 
+| bin _time span=15m AS time_frame 
+| stats values(State) AS State, count by Computer, time_frame 
+| search NOT (State=Started)
