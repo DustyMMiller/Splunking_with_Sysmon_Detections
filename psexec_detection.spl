@@ -1,5 +1,5 @@
 source=xmlwineventlog:microsoft-windows-sysmon/operational EventCode=13 
-([search source=xmlwineventlog:microsoft-windows-sysmon/operational EventCode=11 Image="System" 
+([search source=xmlwineventlog:microsoft-windows-sysmon/operational EventCode=11 Image=System
     | strcat "*" file_name Details 
     | table Details] OR Details="*powershell*") 
 Image="C:\\Windows\\system32\\services.exe" 
