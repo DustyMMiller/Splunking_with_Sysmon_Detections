@@ -3,7 +3,9 @@ Image="C:\\Windows\\system32\\services.exe"
 TargetObject="HKLM\\System\\CurrentControlSet\\Services\\*\\ImagePath") OR
 (source=xmlwineventlog:microsoft-windows-sysmon/operational EventCode=11 Image=System)
 | rex field=Details "(?<reg_file_name>[^\\\]+)$"
-| eval reg_file_name = lower(reg_file_name), file_name = if(isnull(file_name),reg_file_name,lower(file_name)), file_name = if(lower(Details) LIKE "%powershell%", "Powershell Script", file_name), Computer = lower(Computer)
+| eval reg_file_name = lower(reg_file_name), file_name = if(isnull(file_name),reg_file_name,lower(file_name)), 
+file_name = if(lower(Details) LIKE "%powershell%", "Powershell Script", file_name), Computer = lower(Computer)
 | rename _time AS event_time
-| stats values(Image) values(Details) AS RegDetails values(TargetObject) AS RegTargetObject values(event_time) AS EventTimes values(EventCode) AS EventCodes count by file_name, Computer
+| stats values(Image) AS Image, values(Details) AS RegDetails, values(TargetObject) AS RegTargetObject, 
+values(event_time) AS EventTimes, values(EventCode) AS EventCodes, count by file_name, Computer
 | where mvcount(EventCodes) == 2 OR file_name == "Powershell Script"
