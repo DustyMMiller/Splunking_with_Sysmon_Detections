@@ -1,4 +1,5 @@
 source="xmlwineventlog:microsoft-windows-sysmon/operational" EventCode=13
 TargetObject="*SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\\*"
+Image="C:\\Users\\*"
 NOT ([| inputlookup registry_run.csv])
 | table RuleName Image TargetObject Details _time
